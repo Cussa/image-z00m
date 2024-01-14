@@ -1,13 +1,3 @@
-console.log("ImageRealSize", "Hello World! This code runs immediately when the file is loaded.");
-
-Hooks.on("init", function () {
-  console.log("ImageRealSize", "This code runs once the Foundry VTT software begins its initialization workflow.");
-});
-
-Hooks.on("ready", function () {
-  console.log("ImageRealSize", "This code runs once core initialization is ready and game data is available.");
-});
-
 Hooks.on("getImagePopoutHeaderButtons", function (_, buttons) {
   const buttonId = `realSize${Date.now()}`;
   buttons.unshift({
@@ -16,7 +6,6 @@ Hooks.on("getImagePopoutHeaderButtons", function (_, buttons) {
     label: "Real Size",
     onclick: () => realSize(buttonId)
   });
-  console.log("ImageRealSize", buttons);
 });
 
 function realSize(buttonId){
@@ -40,8 +29,6 @@ function realSize(buttonId){
   }
 
   sectionElemn.on("mousedown", (e) => mouseDownHandler(sectionElemn, e, pos));
-
-  console.log("ImageRealSize", "Enabling/disabling the real size.", buttonElem, divElem, sectionElemn, imgElem);
 }
 
 const mouseUpHandler = function (ele) {
@@ -61,7 +48,6 @@ const mouseDownHandler = function (ele, e, pos) {
 
   ele.on('mousemove', (e) => mouseMoveHandler(ele, e, pos));
   ele.on('mouseup', () => mouseUpHandler(ele));
-  console.log("ImageRealSize", "mouseDownHandler", ele, pos, e);
 };
 
 const mouseMoveHandler = function (ele, e, pos) {
@@ -72,5 +58,4 @@ const mouseMoveHandler = function (ele, e, pos) {
   // Scroll the element
   ele.scrollTop(pos.top - dy);
   ele.scrollLeft(pos.left - dx);
-  console.log("ImageRealSize", "mouseMoveHandler", ele, pos, e);
 };
