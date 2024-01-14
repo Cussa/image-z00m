@@ -11,6 +11,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Check files
+        run: ls
+
       - name: Create zip file
         run: zip -r ${{ env.package_type }}.zip . -x '*.git*'
 
