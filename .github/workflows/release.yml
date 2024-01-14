@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create zip file
-        working-directory: .
         run: zip -r ${{ env.package_type }}.zip . -x '*.git*'
 
       - name: Create release
