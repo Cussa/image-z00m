@@ -1,0 +1,7 @@
+img.real-size {
+    max-width: none;
+}
+section.real-size {
+    overflow: auto!important;
+    cursor: grab!important;
+}

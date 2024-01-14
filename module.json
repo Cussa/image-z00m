@@ -1,0 +1,23 @@
+{
+    "id": "image-real-size",
+    "title": "Image Real Size - see images as they really are",
+    "description": "A simple module that allows you to see images on their real size, allowing you to see the details when necessary.",
+    "authors": [
+        {
+            "name": "Cussa Mitre",
+            "url": "https://github.com/Cussa",
+            "discord": "CussaMitre"
+        }
+    ],
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "10",
+        "verified": "11"
+    },
+    "scripts": [
+        "./scripts/image-real-size.js"
+    ],
+    "styles": [
+        "./styles/image-real-size.css"
+    ]
+}
