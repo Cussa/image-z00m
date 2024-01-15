@@ -3,7 +3,7 @@ Hooks.on("getImagePopoutHeaderButtons", function (_, buttons) {
   buttons.unshift({
     class: "z00m",
     icon: `fas fa-magnifying-glass ${buttonId}`,
-    label: "Real Size",
+    label: game.i18n.localize("Z00M.ButtonTitle"),
     onclick: () => z00mHandler(buttonId)
   });
 });
