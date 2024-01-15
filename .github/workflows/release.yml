@@ -30,3 +30,37 @@ jobs:
           name: ${{ github.event.release.name }}
           artifacts: './${{ env.package_type }}.json, ./${{ env.package_type }}.zip'
           body: ${{ github.event.release.body }}
+
+      - name: Create zip file
+        run: |
+          HTTP_RESPONSE=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X POST 'https://api.foundryvtt.com/_api/packages/release_version/' \
+          --header 'Authorization: ${{ secrets.PACKAGE_TOKEN }}' \
+          --header 'Content-Type: application/json' \
+          --data '{
+              "id": "image-z00m",
+              "release": {
+                  "version": "${{ github.event.release.name }}",
+                  "manifest": "https://github.com/cussa/image-z00m/releases/download/${{ github.event.release.name }}/system.json",
+                  "notes": "https://github.com/cussa/image-z00m/releases/tag/${{ github.event.release.name }}",
+                  "compatibility": {
+                      "minimum": "${{ vars.MINIMUM }}",
+                      "verified": "${{ vars.VERIFIED }}",
+                      "maximum": ""
+                  }
+              }
+          }')
+          
+          # extract the body
+          HTTP_BODY=$(echo $HTTP_RESPONSE | sed -e 's/HTTPSTATUS\:.*//g')
+          
+          # extract the status
+          HTTP_STATUS=$(echo $HTTP_RESPONSE | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
+          
+          # print the body
+          echo "$HTTP_BODY"
+          
+          # example using the status
+          if [ ! $HTTP_STATUS -eq 200  ]; then
+            echo "Error [HTTP status: $HTTP_STATUS]"
+            exit 1
+          fi
