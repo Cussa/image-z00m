@@ -14,8 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Check files
-        run: ls
+      - name: Modify manifest
+        run: |
+          sed -i.bak "s|latest|${{ github.event.release.name }}|g" module.json
+          rm module.json.bak
 
       - name: Create zip file
         run: zip -r ${{ env.package_type }}.zip . -x '*.git*'
