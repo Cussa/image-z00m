@@ -5,3 +5,11 @@ section.z00m {
     overflow: auto!important;
     cursor: grab!important;
 }
+
+span.z00m > i.fas {
+    transform: rotate(0deg)!important;
+}
+
+div.z00m {
+    width: auto!important;
+}
