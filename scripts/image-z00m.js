@@ -8,9 +8,20 @@ Hooks.on("getImagePopoutHeaderButtons", function (_, buttons) {
   });
 });
 
+Hooks.on("ready", function () {
+  game.settings.register("image-z00m", "maxZoom", {
+    name: game.i18n.localize("Z00M.MaxZoom"),
+    hint: game.i18n.localize("Z00M.MaxZoomHint"),
+    scope: 'world',     // "world" = sync to db, "client" = local storage
+    config: true,       // false if you dont want it to show in module config
+    type: Number,       // Number, Boolean, String, Object
+    default: 100
+  });
+});
+
 const z00mButtonsTemplate = '<span class="z00m"><text>100%</text><i class="fas fa-magnifying-glass-plus"></i><i class="fas fa-magnifying-glass-minus"></i></span>';
 
-function z00mHandler(buttonId){
+function z00mHandler(buttonId) {
   const buttonElem = $(`.${buttonId}`);
   buttonElem.toggleClass("fa-magnifying-glass");
   buttonElem.toggleClass("fa-magnifying-glass-location");
@@ -35,11 +46,12 @@ function z00mHandler(buttonId){
 
   let zoomConfig = {
     currentZoom: 100,
+    maxZoom: game.settings.get("image-z00m", "maxZoom"),
     originalSize: imgElem.prop('naturalWidth'),
     imgElem: imgElem,
     textElem: zoomText
   };
-  
+
   z00mButtons.find(".fa-magnifying-glass-plus").first().on("click", () => zoomIn(zoomConfig));
   z00mButtons.find(".fa-magnifying-glass-minus").first().on("click", () => zoomOut(zoomConfig));
   z00mButtons.insertBefore(resizeDiv.children("i").first());
@@ -56,10 +68,10 @@ const mouseUpHandler = function (ele) {
 
 const mouseDownHandler = function (ele, e, pos) {
   pos = {
-      left: ele.scrollLeft(),
-      top: ele.scrollTop(),
-      x: e.clientX,
-      y: e.clientY,
+    left: ele.scrollLeft(),
+    top: ele.scrollTop(),
+    x: e.clientX,
+    y: e.clientY,
   };
 
   ele.on('mousemove', (e) => mouseMoveHandler(ele, e, pos));
@@ -74,19 +86,19 @@ const mouseMoveHandler = function (ele, e, pos) {
   ele.scrollLeft(pos.left - dx);
 };
 
-const zoomIn = function(zoomConfig) {
-  if (zoomConfig.currentZoom == 100)
+const zoomIn = function (zoomConfig) {
+  if (zoomConfig.currentZoom == zoomConfig.maxZoom)
     return;
   applyZoom(10, zoomConfig);
 }
 
-const zoomOut = function(zoomConfig) {
+const zoomOut = function (zoomConfig) {
   if (zoomConfig.currentZoom == 10)
     return;
   applyZoom(-10, zoomConfig);
 }
 
-const applyZoom = function(modifier, zoomConfig) {
+const applyZoom = function (modifier, zoomConfig) {
   zoomConfig.currentZoom += modifier;
   const newWidth = zoomConfig.originalSize * zoomConfig.currentZoom / 100;
 
