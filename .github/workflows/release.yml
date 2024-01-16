@@ -40,7 +40,7 @@ jobs:
               "id": "image-z00m",
               "release": {
                   "version": "${{ github.event.release.name }}",
-                  "manifest": "https://github.com/cussa/image-z00m/releases/download/${{ github.event.release.name }}/system.json",
+                  "manifest": "https://github.com/cussa/image-z00m/releases/download/${{ github.event.release.name }}/module.json",
                   "notes": "https://github.com/cussa/image-z00m/releases/tag/${{ github.event.release.name }}",
                   "compatibility": {
                       "minimum": "${{ vars.FOUNDRY_MINIMUM }}",
