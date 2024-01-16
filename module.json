@@ -2,6 +2,7 @@
     "id": "image-z00m",
     "title": "Image Z00M",
     "description": "A simple module that allows you to see images on their real size and zoom them, allowing you to see the details when necessary.",
+    "author": "Cussa Mitre",
     "authors": [
         {
             "name": "Cussa Mitre",
@@ -9,7 +10,7 @@
             "discord": "CussaMitre"
         }
     ],
-    "version": "1.0.0",
+    "version": "latest",
     "compatibility": {
         "minimum": "10",
         "verified": "11"
