@@ -29,8 +29,8 @@
         }
     ],
     "allowBugReporter": true,
-    "bugs": "https://github.com/Cussa/image-z00m/issues",
-    "manifest": "https://github.com/Cussa/image-z00m/releases/download/latest/module.json",
-    "download": "https://github.com/Cussa/image-z00m/releases/download/latest/module.zip",
-    "changelog": "https://github.com/Cussa/image-z00m/releases"
+    "bugs": "https://github.com/cussa/image-z00m/issues",
+    "manifest": "https://github.com/cussa/image-z00m/releases/download/latest/module.json",
+    "download": "https://github.com/cussa/image-z00m/releases/download/latest/module.zip",
+    "changelog": "https://github.com/cussa/image-z00m/releases"
 }
