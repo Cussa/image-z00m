@@ -10,7 +10,7 @@ This module adds a button to image windows that allows you to see that image on 
    2. Paste the following on the Manifest Link: [https://github.com/Cussa/image-z00m/releases/latest/download/module.json](https://github.com/Cussa/image-z00m/releases/latest/download/module.json)
 3. In your world, enable the module on the module settings.
 
-![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/cussa/image-z00m/module.zip?style=for-the-badge&logo=github)
+[![](https://img.shields.io/github/downloads/cussa/image-z00m/module.zip?style=for-the-badge&logo=github)](#)
 
 ## Licensing
 This project is licensed under the MIT license.
