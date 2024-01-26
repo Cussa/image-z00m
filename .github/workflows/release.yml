@@ -34,7 +34,7 @@ jobs:
       - name: Get Compatibility
         run: |
           echo 'COMPATIBILITY<<EOF' >> $GITHUB_ENV
-          cat system.json | jq .compatibility >> $GITHUB_ENV
+          cat module.json | jq .compatibility >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
       - name: Send package to foundry
