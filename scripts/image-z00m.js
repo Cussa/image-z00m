@@ -54,7 +54,7 @@ function z00mHandler(buttonId) {
 
   z00mButtons.find(".fa-magnifying-glass-plus").first().on("click", () => zoomIn(zoomConfig));
   z00mButtons.find(".fa-magnifying-glass-minus").first().on("click", () => zoomOut(zoomConfig));
-  z00mButtons.insertBefore(resizeDiv.children("i").first());
+  resizeDiv.get(0).insertAdjacentElement("afterbegin", z00mButtons.get(0));
 
   let pos = { top: 0, left: 0, x: 0, y: 0 };
 
