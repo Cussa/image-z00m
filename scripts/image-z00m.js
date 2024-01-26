@@ -58,6 +58,7 @@ function z00mHandler(buttonId) {
 
   let pos = { top: 0, left: 0, x: 0, y: 0 };
 
+  applyZoom(0, zoomConfig);
   sectionElemn.on("mousedown", (e) => mouseDownHandler(sectionElemn, e, pos));
 }
 
