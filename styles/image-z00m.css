@@ -20,10 +20,18 @@ div.z00m-control {
     top: 36px !important;
     right: 0 !important;
     z-index: 1000 !important;
-    background: black;
-    color: white;
     display: inline-flex;
     gap: 5px;
     padding: 5px;
     border: 2px double;
+}
+
+body.theme-dark div.z00m-control {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+body.theme-light div.z00m-control {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
 }
