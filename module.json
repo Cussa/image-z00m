@@ -2,11 +2,11 @@
     "id": "image-z00m",
     "title": "Image Z00M",
     "description": "A simple module that allows you to see images on their real size and zoom them, allowing you to see the details when necessary.",
-    "author": "Cussa Mitre",
+    
     "authors": [
         {
             "name": "Cussa Mitre",
-            "url": "https://github.com/Cussa",
+            "url": "https://hodpub.com",
             "discord": "CussaMitre"
         }
     ],
@@ -28,7 +28,6 @@
           "path": "lang/en.json"
         }
     ],
-    "allowBugReporter": true,
     "bugs": "https://github.com/cussa/image-z00m/issues",
     "manifest": "https://github.com/cussa/image-z00m/releases/download/latest/module.json",
     "download": "https://github.com/cussa/image-z00m/releases/download/latest/module.zip",
