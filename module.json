@@ -12,8 +12,8 @@
     ],
     "version": "latest",
     "compatibility": {
-        "minimum": "10",
-        "verified": "11"
+        "minimum": "13",
+        "verified": "13"
     },
     "scripts": [
         "./scripts/image-z00m.js"

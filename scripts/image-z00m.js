@@ -1,6 +1,8 @@
-Hooks.on("getImagePopoutHeaderButtons", function (_, buttons) {
+Hooks.on("getHeaderControlsImagePopout", function (app, buttons) {
   const buttonId = `z00m${Date.now()}`;
+  app.options.actions.z00m = () => z00mHandler(buttonId);
   buttons.unshift({
+    action: "z00m",
     class: "z00m",
     icon: `fas fa-magnifying-glass ${buttonId}`,
     label: game.i18n.localize("Z00M.ButtonTitle"),
@@ -19,26 +21,24 @@ Hooks.on("ready", function () {
   });
 });
 
-const z00mButtonsTemplate = '<span class="z00m"><text>100%</text><i class="fas fa-magnifying-glass-plus"></i><i class="fas fa-magnifying-glass-minus"></i></span>';
+const z00mButtonsTemplate = '<div class="z00m-control"><text>100%</text><i class="fas fa-magnifying-glass-plus"></i><i class="fas fa-magnifying-glass-minus"></i></div>';
 
 function z00mHandler(buttonId) {
   const buttonElem = $(`.${buttonId}`);
   buttonElem.toggleClass("fa-magnifying-glass");
   buttonElem.toggleClass("fa-magnifying-glass-location");
 
-  const divElem = buttonElem.parent().parent().parent();
+  const divElem = buttonElem.closest(".application.image-popout");
   const sectionElemn = divElem.children("section").first();
   const imgElem = sectionElemn.find("img").first();
-  const resizeDiv = divElem.find(".window-resizable-handle").first();
   const z00mButtons = $(z00mButtonsTemplate);
   const zoomText = z00mButtons.find("text").first();
 
   sectionElemn.toggleClass("z00m");
   imgElem.toggleClass("z00m");
-  resizeDiv.toggleClass("z00m");
 
   if (!buttonElem.hasClass("fa-magnifying-glass-location")) {
-    resizeDiv.children(".z00m").first().remove();
+    divElem.children(".z00m-control").first().remove();
     imgElem.css("width", "");
     sectionElemn.off('mousedown');
     return;
@@ -54,7 +54,7 @@ function z00mHandler(buttonId) {
 
   z00mButtons.find(".fa-magnifying-glass-plus").first().on("click", () => zoomIn(zoomConfig));
   z00mButtons.find(".fa-magnifying-glass-minus").first().on("click", () => zoomOut(zoomConfig));
-  resizeDiv.get(0).insertAdjacentElement("afterbegin", z00mButtons.get(0));
+  divElem.get(0).appendChild(z00mButtons.get(0));
 
   let pos = { top: 0, left: 0, x: 0, y: 0 };
 

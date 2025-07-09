@@ -1,15 +1,29 @@
 img.z00m {
     max-width: none;
 }
+
 section.z00m {
-    overflow: auto!important;
-    cursor: grab!important;
+    overflow: auto !important;
+    cursor: grab !important;
 }
 
-span.z00m > i.fas {
-    transform: rotate(0deg)!important;
+span.z00m>i.fas {
+    transform: rotate(0deg) !important;
 }
 
 div.z00m {
-    width: auto!important;
+    width: auto !important;
+}
+
+div.z00m-control {
+    position: absolute !important;
+    top: 36px !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: black;
+    color: white;
+    display: inline-flex;
+    gap: 5px;
+    padding: 5px;
+    border: 2px double;
 }
