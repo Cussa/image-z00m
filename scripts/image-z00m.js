@@ -4,7 +4,7 @@ Hooks.on("getHeaderControlsImagePopout", function (app, buttons) {
   buttons.unshift({
     action: "z00m",
     class: "z00m",
-    icon: `fas fa-magnifying-glass ${buttonId}`,
+    icon: `fas fa-magnifying-glass ${buttonId} ${app.id}`,
     label: game.i18n.localize("Z00M.ButtonTitle"),
     onclick: () => z00mHandler(buttonId)
   });
@@ -28,7 +28,10 @@ function z00mHandler(buttonId) {
   buttonElem.toggleClass("fa-magnifying-glass");
   buttonElem.toggleClass("fa-magnifying-glass-location");
 
-  const divElem = buttonElem.closest(".application.image-popout");
+  debugger;
+  const divId = buttonElem[0].classList.value.split(" ").filter(x => x.startsWith("app"))[0];
+
+  const divElem = $(`#${divId}`);
   const sectionElemn = divElem.children("section").first();
   const imgElem = sectionElemn.find("img").first();
   const z00mButtons = $(z00mButtonsTemplate);

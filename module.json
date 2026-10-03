@@ -10,10 +10,10 @@
             "discord": "CussaMitre"
         }
     ],
-    "version": "latest",
+    "version": "1.2.0",
     "compatibility": {
-        "minimum": "13",
-        "verified": "13"
+        "minimum": "14",
+        "verified": "14"
     },
     "scripts": [
         "./scripts/image-z00m.js"
